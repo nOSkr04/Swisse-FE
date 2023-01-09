@@ -1,0 +1,1 @@
+export const photo = "https://altanzaan.org/upload/"
