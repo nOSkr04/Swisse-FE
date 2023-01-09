@@ -3,8 +3,18 @@ import clsx from "clsx";
 import blogFeaturedData from "../../data/blog-featured/blog-featured.json";
 import BlogFeaturedSingle from "../../component/blog-featured/BlogFeaturedSingle";
 import SectionTitle from "../../component/section-title/SectionTitle";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
+  const [data,setData] = useState()
+  useEffect(() => {
+    axios.get("https://altanzaan.org/api/v1/blogs").
+    then((res) => {setData(res.data.data)})
+    .catch((err) => {console.log(err);})
+  },[])
+
   return (
     <div className={clsx("blog-area", spaceTopClass, spaceBottomClass)}>
       <div className="container">
@@ -14,7 +24,7 @@ const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
           spaceClass="mb-55"
         />
         <div className="row">
-          {blogFeaturedData?.map(singlePost => (
+          {data?.map(singlePost => (
             <div className="col-lg-4 col-sm-6" key={singlePost.id}>
               <BlogFeaturedSingle singlePost={singlePost} />
             </div>

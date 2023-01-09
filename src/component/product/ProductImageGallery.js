@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
-import { EffectFade, Thumbs } from 'swiper';
+import { EffectFade, Thumbs } from "swiper";
 // import AnotherLightbox from "yet-another-react-lightbox";
 // import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 // import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -22,7 +22,7 @@ const ProductImageGallery = ({ product }) => {
     loop: true,
     effect: "fade",
     fadeEffect: {
-      crossFade: true
+      crossFade: true,
     },
     thumbs: { swiper: thumbsSwiper },
     modules: [EffectFade, Thumbs],
@@ -36,15 +36,29 @@ const ProductImageGallery = ({ product }) => {
     freeMode: true,
     loop: true,
     slideToClickedSlide: true,
-    navigation: true
+    navigation: true,
   };
 
   return (
     <Fragment>
       <div className="product-large-image-wrapper">
-      
         {product?.images ? (
           <Swiper options={gallerySwiperParams}>
+            { product?.images.image && 
+            <SwiperSlide>
+              {/* <button className="lightgallery-button" >
+                  <i className="pe-7s-expand1"></i>
+                </button> */}
+              <div className="single-image">
+                <img
+                  src={photo + product?.images.image}
+                  className="img-fluid"
+                  alt=""
+                  />
+              </div>
+            </SwiperSlide>
+                }
+            {product.images.image1 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -57,6 +71,8 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
+            {product.images.image2 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -69,6 +85,8 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
+            {product.images.image3 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -81,10 +99,12 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
+            {product.images.image4 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
-                  <i className="pe-7s-expand1"></i>
-                </button> */}
+                   <i className="pe-7s-expand1"></i>
+                 </button> */}
                 <div className="single-image">
                   <img
                     src={photo + product?.images.image4}
@@ -93,7 +113,22 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
-           
+            )}
+            {product.images.image5 && (
+              <SwiperSlide>
+                {/* <button className="lightgallery-button" >
+                   <i className="pe-7s-expand1"></i>
+                 </button> */}
+                <div className="single-image">
+                  <img
+                    src={photo + product?.images.image5}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </SwiperSlide>
+            )}
+
             {/* <AnotherLightbox
                 open={index >= 0}
                 index={index}
@@ -103,12 +138,25 @@ const ProductImageGallery = ({ product }) => {
             /> */}
           </Swiper>
         ) : null}
-
       </div>
       <div className="product-small-image-wrapper mt-15">
         {product?.images ? (
           <Swiper options={thumbnailSwiperParams}>
-         
+            {product?.images.image && 
+            <SwiperSlide>
+              {/* <button className="lightgallery-button" >
+                  <i className="pe-7s-expand1"></i>
+                </button> */}
+              <div className="single-image">
+                <img
+                  src={photo + product?.images.image}
+                  className="img-fluid"
+                  alt=""
+                  />
+              </div>
+            </SwiperSlide>
+                }
+            {product.images.image1 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -121,6 +169,8 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
+            {product.images.image2 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -133,6 +183,8 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
+            {product.images.image3 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -145,6 +197,8 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
+            {product.images.image4 && (
               <SwiperSlide>
                 {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
@@ -157,6 +211,7 @@ const ProductImageGallery = ({ product }) => {
                   />
                 </div>
               </SwiperSlide>
+            )}
           </Swiper>
         ) : null}
       </div>
@@ -165,7 +220,7 @@ const ProductImageGallery = ({ product }) => {
 };
 
 ProductImageGallery.propTypes = {
-  product: PropTypes.shape({})
+  product: PropTypes.shape({}),
 };
 
 export default ProductImageGallery;

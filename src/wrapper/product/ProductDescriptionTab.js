@@ -33,17 +33,17 @@ const ProductDescriptionTab = ({
                   <ul>
                     {weight && (
                       <li>
-                        <span>Жин</span> weight
+                        <span>Жин</span> {weight}
                       </li>
                     )}
                     {ingredients && (
                       <li>
-                        <span>Найрлага</span>
+                        <span>Найрлага</span> {ingredients}
                       </li>
                     )}
                     {otherInfo && 
                     <li>
-                      <span>Бусад мэдээлэл</span> otherInfo
+                      <span>Бусад мэдээлэл</span> {otherInfo}
                     </li>
                     }
                   </ul>
