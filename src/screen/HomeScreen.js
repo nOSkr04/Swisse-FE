@@ -4,13 +4,14 @@ import LayoutOne from "../layouts/LayoutOne";
 // Wrapper
 import BannerThirty from "../wrapper/banner/BannerThirty";
 import ProductSliderFour from "../wrapper/product/ProductSliderFour";
-import FeatureIconSix from "../wrapper/feature-icon/FeatureIconSix";
 import HeroSliderTwentyEight from "../wrapper/hero-slider/HeroSliderTwentyEight";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import {store} from "../store/store"
 import { setProducts } from "../store/slices/product-slice";
+import VideoPopup from "../component/video-popup/VideoPopup";
+import VideoPopupOne from "../component/video-popup/VideoPopupOne";
 const HomeScreen = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -33,7 +34,9 @@ const HomeScreen = () => {
         {/* hero slider */}
         <HeroSliderTwentyEight />
         {/* feature text */}
-        <FeatureIconSix spaceBottomClass="pb-100" spaceTopClass="pt-30" />
+        <VideoPopup spaceBottomClass="pb-100"  />
+        <VideoPopupOne spaceBottomClass="pb-100"  />
+        {/* <FeatureIconSix spaceBottomClass="pb-100" spaceTopClass="pt-30" /> */}
         
         {/* product slider */}
         <ProductSliderFour category="fashion" />
