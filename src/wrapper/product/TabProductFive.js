@@ -34,7 +34,7 @@ const TabProductFive = ({
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="saleItems">
+              <Nav.Link eventKey="vitaminItems">
                 <h4>Витамин</h4>
               </Nav.Link>
             </Nav.Item>
@@ -45,7 +45,7 @@ const TabProductFive = ({
                 <ProductGridTwo
                   category={"Хүүхэд"}
                   type="new"
-                  limit={8}
+                  limit={50}
                   spaceBottomClass="mb-25"
                 />
               </div>
@@ -55,7 +55,7 @@ const TabProductFive = ({
                 <ProductGridTwo
                   category={"Эрэгтэй"}
                   type="bestSeller"
-                  limit={8}
+                  limit={50}
                   spaceBottomClass="mb-25"
                 />
               </div>
@@ -65,17 +65,17 @@ const TabProductFive = ({
                 <ProductGridTwo
                   category={"Эмэгтэй"}
                   type="saleItems"
-                  limit={8}
+                  limit={50}
                   spaceBottomClass="mb-25"
                 />
               </div>
             </Tab.Pane>
-            <Tab.Pane eventKey="saleItems">
+            <Tab.Pane eventKey="vitaminItems">
               <div className="row">
                 <ProductGridTwo
                   category={"Витамин"}
-                  type="saleItems"
-                  limit={8}
+                  type="vitaminItems"
+                  limit={50}
                   spaceBottomClass="mb-25"
                 />
               </div>

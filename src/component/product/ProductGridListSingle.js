@@ -112,10 +112,10 @@ const ProductGridListSingle = ({
             <div className="product-list-image-wrap">
               <div className="product-img">
                 <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
-                  {product.images && (
+                  {product.thumbnail && (
                     <img
                       className="default-img img-fluid"
-                      src={photo + product.images.image1}
+                      src={photo + product.thumbnail}
                       alt=""
                     />
                   )}
@@ -144,7 +144,7 @@ const ProductGridListSingle = ({
                 <span>{numberFormatter.format(finalProductPrice)} ₮</span>
               </div>
 
-              {product.description ? <p>{product.description}</p> : ""}
+              {product.shortDescription ? <p>{product.shortDescription}</p> : ""}
 
               <div className="shop-list-actions d-flex align-items-center">
                 <div className="shop-list-btn btn-hover">

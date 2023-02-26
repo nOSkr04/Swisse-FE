@@ -68,7 +68,18 @@ function ProductModal({
           <div className="col-md-5 col-sm-12 col-xs-12">
             <div className="product-large-image-wrapper">
               <Swiper options={gallerySwiperParams}>
-                {product.images && product.images.image1 ? (
+                {product.thumbnail  ? (
+                  <SwiperSlide>
+                    <div className="single-image">
+                      <img
+                        src={photo + product.thumbnail}
+                        className="img-fluid"
+                        alt="Product"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ) : null}
+                {/* {product.images && product.images.image1 ? (
                   <SwiperSlide>
                     <div className="single-image">
                       <img
@@ -78,8 +89,8 @@ function ProductModal({
                       />
                     </div>
                   </SwiperSlide>
-                ) : null}
-                {product.images && product.images.image2 ? (
+                ) : null} */}
+                {/* {product.images && product.images.image2 ? (
                   <SwiperSlide>
                     <div className="single-image">
                       <img
@@ -111,7 +122,7 @@ function ProductModal({
                       />
                     </div>
                   </SwiperSlide>
-                ) : null}
+                ) : null} */}
               </Swiper>
             </div>
             <div className="product-small-image-wrapper mt-15">
@@ -171,7 +182,7 @@ function ProductModal({
               </div>
         
               <div className="pro-details-list">
-                <p>{product.description}</p>
+                <p>{product.shortDescription}</p>
               </div>
                 <div className="pro-details-quality">
                   <div className="cart-plus-minus">

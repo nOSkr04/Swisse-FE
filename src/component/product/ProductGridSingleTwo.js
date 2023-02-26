@@ -31,12 +31,12 @@ const ProductGridSingleTwo = ({
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             {product.thumbnail && 
             <img
-            className="default-img"
+            className="img"
             src={photo + product.thumbnail}
             alt=""
             />
           }
-            {/* {product.images?.image2 ? (
+            {product.images?.image2 ? (
               <img
                 className="hover-img"
                 src={photo + product.images.image2}
@@ -44,7 +44,7 @@ const ProductGridSingleTwo = ({
               />
             ) : (
               ""
-            )} */}
+            )}
           </Link>
           <div className="product-action-2">
             {product.stock && product.stock > 0 ? (
