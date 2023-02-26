@@ -28,10 +28,10 @@ const ProductGridListSingle = ({
       <div className={clsx("product-wrap", spaceBottomClass)}>
         <div className="product-img">
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
-            {product.images && (
+            {product.thumbnail  && (
               <img
                 className="default-img"
-                src={photo + product.images.image1}
+                src={photo + product.thumbnail}
                 alt=""
               />
             )}

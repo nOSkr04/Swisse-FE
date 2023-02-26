@@ -43,16 +43,16 @@ const FooterOne = ({
                   <li>
                     <Link to={process.env.PUBLIC_URL + "/swisse"}>Swisse</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to={process.env.PUBLIC_URL + "/nutrex"}>
                       Nutrex
                     </Link>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <Link to={process.env.PUBLIC_URL + "/blog"}>
                       Нийтлэл
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to={process.env.PUBLIC_URL + "contact"}>
                       Холбоо барих
@@ -106,40 +106,24 @@ const FooterOne = ({
                 <ul>
                   <li>
                     <a
-                      href="//www.facebook.com"
+                      href="//www.facebook.com/swissemongolia/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Facebook
                     </a>
                   </li>
+               
                   <li>
                     <a
-                      href="//www.twitter.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.instagram.com"
+                      href="//www.instagram.com/swissemng/?igshid=YmMyMTA2M2Y%3D&fbclid=IwAR1CH5zQTp18N0a9Pcu1zfXbNdJiG3Z7aiJVGuYEe4968gYX5Iaz2dhKL4E"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Instagram
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="//www.youtube.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Youtube
-                    </a>
-                  </li>
+                 
                 </ul>
               </div>
             </div>

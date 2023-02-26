@@ -29,14 +29,14 @@ const ProductGridSingleTwo = ({
       <div className={clsx("product-wrap-2", spaceBottomClass, colorClass)}>
         <div className="product-img">
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
-            {product.images && 
+            {product.thumbnail && 
             <img
             className="default-img"
-            src={photo + product.images.image1}
+            src={photo + product.thumbnail}
             alt=""
             />
           }
-            {product.images?.image2 ? (
+            {/* {product.images?.image2 ? (
               <img
                 className="hover-img"
                 src={photo + product.images.image2}
@@ -44,7 +44,7 @@ const ProductGridSingleTwo = ({
               />
             ) : (
               ""
-            )}
+            )} */}
           </Link>
           <div className="product-action-2">
             {product.stock && product.stock > 0 ? (

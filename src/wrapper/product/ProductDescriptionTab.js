@@ -33,19 +33,25 @@ const ProductDescriptionTab = ({
                   <ul>
                     {weight && (
                       <li>
-                        <span>Жин</span> {weight}
+                         <span><strong>Анхааруулга:</strong></span> {weight}
                       </li>
                     )}
                     {ingredients && (
                       <li>
-                        <span>Найрлага</span> {ingredients}
+                        <strong>
+                          <span>Онцлог чанар:</span>
+                        </strong>{" "}
+                        {ingredients}
                       </li>
                     )}
-                    {otherInfo && 
-                    <li>
-                      <span>Бусад мэдээлэл</span> {otherInfo}
-                    </li>
-                    }
+                    {otherInfo && (
+                      <li>
+                        <strong>
+                          <span>Хадгалалт:</span>
+                        </strong>{" "}
+                        {otherInfo}
+                      </li>
+                    )}
                   </ul>
                 </div>
               </Tab.Pane>

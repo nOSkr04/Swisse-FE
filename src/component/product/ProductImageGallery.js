@@ -42,102 +42,22 @@ const ProductImageGallery = ({ product }) => {
   return (
     <Fragment>
       <div className="product-large-image-wrapper">
-        {product?.images ? (
-          <Swiper options={gallerySwiperParams}>
-            { product?.images.image && 
+      <Swiper options={gallerySwiperParams}>
+      { product?.thumbnail && 
             <SwiperSlide>
               {/* <button className="lightgallery-button" >
                   <i className="pe-7s-expand1"></i>
                 </button> */}
               <div className="single-image">
                 <img
-                  src={photo + product?.images.image}
+                  src={photo + product?.thumbnail}
                   className="img-fluid"
                   alt=""
                   />
               </div>
             </SwiperSlide>
                 }
-            {product.images.image1 && (
-              <SwiperSlide>
-                {/* <button className="lightgallery-button" >
-                  <i className="pe-7s-expand1"></i>
-                </button> */}
-                <div className="single-image">
-                  <img
-                    src={photo + product?.images.image1}
-                    className="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </SwiperSlide>
-            )}
-            {product.images.image2 && (
-              <SwiperSlide>
-                {/* <button className="lightgallery-button" >
-                  <i className="pe-7s-expand1"></i>
-                </button> */}
-                <div className="single-image">
-                  <img
-                    src={photo + product?.images.image2}
-                    className="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </SwiperSlide>
-            )}
-            {product.images.image3 && (
-              <SwiperSlide>
-                {/* <button className="lightgallery-button" >
-                  <i className="pe-7s-expand1"></i>
-                </button> */}
-                <div className="single-image">
-                  <img
-                    src={photo + product?.images.image3}
-                    className="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </SwiperSlide>
-            )}
-            {product.images.image4 && (
-              <SwiperSlide>
-                {/* <button className="lightgallery-button" >
-                   <i className="pe-7s-expand1"></i>
-                 </button> */}
-                <div className="single-image">
-                  <img
-                    src={photo + product?.images.image4}
-                    className="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </SwiperSlide>
-            )}
-            {product.images.image5 && (
-              <SwiperSlide>
-                {/* <button className="lightgallery-button" >
-                   <i className="pe-7s-expand1"></i>
-                 </button> */}
-                <div className="single-image">
-                  <img
-                    src={photo + product?.images.image5}
-                    className="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </SwiperSlide>
-            )}
-
-            {/* <AnotherLightbox
-                open={index >= 0}
-                index={index}
-                close={() => setIndex(-1)}
-                slides={slides}
-                plugins={[Thumbnails, Zoom, Fullscreen]}
-            /> */}
-          </Swiper>
-        ) : null}
+                </Swiper>
       </div>
       <div className="product-small-image-wrapper mt-15">
         {product?.images ? (

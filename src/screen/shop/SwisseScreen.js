@@ -30,7 +30,7 @@ const HomeCosmetics = () => {
           featureShapeClass="support-shape-3"
         /> */}
         {/* blog featured */}
-        <BlogFeatured spaceBottomClass="pb-55" />
+        {/* <BlogFeatured spaceBottomClass="pb-55" /> */}
       </LayoutOne>
     </Fragment>
   );

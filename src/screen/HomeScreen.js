@@ -24,8 +24,8 @@ const HomeScreen = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="Fashion Home"
-        description="Fashion home of flone react minimalist eCommerce template."
+        titleTemplate="Нүүр хуудас"
+        description="Алтан заан."
       />
       <LayoutOne
         headerContainerClass="container-fluid"

@@ -24,9 +24,9 @@ const MobileNavMenu = () => {
             </li> */}
           </ul>
         </li>
-        <li>
+        {/* <li>
           <Link to={process.env.PUBLIC_URL + "/blog"}>Нийтлэл</Link>
-        </li>
+        </li> */}
         <li>
           <Link to={process.env.PUBLIC_URL + "/contact"}>
             Бидний тухай

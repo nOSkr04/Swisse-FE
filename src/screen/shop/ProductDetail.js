@@ -38,7 +38,7 @@ const ProductDetail = () => {
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
-          productFullDesc={product.description}
+          productFullDesc={product.shortDescription}
           otherInfo={product.otherInfo}
           weight={product.weight}
           ingredients={product.ingredients}

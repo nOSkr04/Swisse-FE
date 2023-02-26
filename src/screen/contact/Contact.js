@@ -35,8 +35,8 @@ const Contact = () => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+976 99119911</p>
-                      <p>+976 88118811</p>
+                      <p>+976 97007757</p>
+                      <p>+976 93008887</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -45,13 +45,8 @@ const Contact = () => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        <a href="mailto:yourname@email.com">
-                          yourname@email.com
-                        </a>
-                      </p>
-                      <p>
-                        <a href="https://yourwebsitename.com">
-                          yourwebsitename.com
+                        <a href="mailto:Altanzaan0@gmail.com">
+                        Altanzaan0@gmail.com
                         </a>
                       </p>
                     </div>
@@ -61,38 +56,25 @@ const Contact = () => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Address goes here, </p>
-                      <p>street, Crossroad 123.</p>
+                      <p>Хаяг, </p>
+                      <p>Улаанбаатар, Баянгол дүүрэг, Үйлдвэрийн төвийн бүс-2, Монгол 99 төв, 401 тоот</p>
                     </div>
                   </div>
                   <div className="contact-social text-center">
                     <h3>Цахим хаяг</h3>
                     <ul>
                       <li>
-                        <a href="//facebook.com">
+                        <a href="//facebook.com/swissemongolia/">
                           <i className="fa fa-facebook" />
                         </a>
                       </li>
                       <li>
-                        <a href="//pinterest.com">
-                          <i className="fa fa-pinterest-p" />
+                        <a href="//instagram.com/swissemng?igshid=YmMyMTA2M2Y=">
+                          <i className="fa fa-instagram" />
                         </a>
                       </li>
-                      <li>
-                        <a href="//thumblr.com">
-                          <i className="fa fa-tumblr" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//twitter.com">
-                          <i className="fa fa-twitter" />
-                        </a>
-                      </li>
+                     
+                    
                     </ul>
                   </div>
                 </div>
