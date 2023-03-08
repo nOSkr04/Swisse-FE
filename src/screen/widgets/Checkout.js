@@ -1,31 +1,92 @@
 import { Fragment } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import SEO from "../../component/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrapper/breadcrumb/Breadcrumb";
+import axios from "axios";
+import { useState } from "react";
+import QpayModal from "./QpayModal";
 
 const Checkout = () => {
   let cartTotalPrice = 0;
-
+  let { id, price } = useParams();
   let { pathname } = useLocation();
+  const [modalShow, setModalShow] = useState(false);
+  const [base64Img, setBase64Img] = useState("");
+  const [district, setDistrict] = useState("");
+  const [apartmentNumber, setApartmentNumber] = useState("");
+  const [floor, setFloor] = useState("");
+  const [houseCode, setHouseCode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [locationDetail, setLocationDetail] = useState("");
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
-
+  const [invoince, setInvoince] = useState("");
+  const handleDistrict = (event) => {
+    setDistrict(event.target.value);
+  };
+  const handleAps = (event) => {
+    setApartmentNumber(event.target.value);
+  };
+  const handleFloor = (event) => {
+    setFloor(event.target.value);
+  };
+  const handleHouseCode = (event) => {
+    setHouseCode(event.target.value);
+  };
+  const handlePhone = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+  const handleLocation = (event) => {
+    setLocationDetail(event.target.value);
+  };
+  const wallet = async () => {
+    await axios
+      .put(
+        `https://altanzaan.org/api/v1/bills/${id}`,
+        {
+          district: district,
+          apartmentNumber: apartmentNumber,
+          floor: floor,
+          houseCode: houseCode,
+          phoneNumber: phoneNumber,
+          locationDetail,
+        },
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTAxNWE4NDQ0ODAyMmY1MGM1OGJlNSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3ODI5NjMxMSwiZXhwIjoxNjgwODg4MzExfQ.UkWEOTRdQyKuwbKoU4AUjTsZenOtGNaSdbhHqYGObtI`,
+          },
+        }
+      )
+      .then((res) => {
+        // console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    await axios
+      .post(`https://altanzaan.org/api/v1/products/invoice/${id}`, {
+        amount: price,
+      })
+      .then((res) => {
+        setModalShow(true);
+        setBase64Img(res.data?.data.qrImage);
+        setInvoince(res.data?.data.invoiceId);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <Fragment>
-      <SEO
-        titleTemplate="Checkout"
-        description="Checkout page of flone react minimalist eCommerce template."
-      />
+      <SEO titleTemplate="Төлбөр" description="Төлбөр тооцоо" />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb 
+        <Breadcrumb
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Checkout", path: process.env.PUBLIC_URL + pathname }
-          ]} 
+            { label: "Нүүр", path: process.env.PUBLIC_URL + "/" },
+            { label: "Төлбөp", path: process.env.PUBLIC_URL + pathname },
+          ]}
         />
         <div className="checkout-area pt-95 pb-100">
           <div className="container">
@@ -33,93 +94,70 @@ const Checkout = () => {
               <div className="row">
                 <div className="col-lg-7">
                   <div className="billing-info-wrap">
-                    <h3>Billing Details</h3>
+                    <h3>Хүргүүлэх хаяг</h3>
                     <div className="row">
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>First Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>Last Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Company Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="billing-select mb-20">
-                          <label>Country</label>
-                          <select>
-                            <option>Select a country</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="billing-info mb-20">
-                          <label>Street Address</label>
+                          <label>Дүүрэг хороо</label>
                           <input
-                            className="billing-address"
-                            placeholder="House number and street name"
+                            placeholder="СБД, 4р-хороо"
                             type="text"
-                          />
-                          <input
-                            placeholder="Apartment, suite, unit etc."
-                            type="text"
+                            value={district}
+                            onChange={handleDistrict}
                           />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Town / City</label>
-                          <input type="text" />
+                          <label>Байр тоот / Хашаа тоот</label>
+                          <input
+                            type="text"
+                            value={apartmentNumber}
+                            onChange={handleAps}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>State / County</label>
-                          <input type="text" />
+                          <label>Хэдэн давхарт</label>
+                          <input
+                            type="text"
+                            value={floor}
+                            onChange={handleFloor}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>Postcode / ZIP</label>
-                          <input type="text" />
+                          <label>Код?</label>
+                          <input
+                            type="text"
+                            value={houseCode}
+                            onChange={handleHouseCode}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>Phone</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>Email Address</label>
-                          <input type="text" />
+                          <label>Утас</label>
+                          <input
+                            type="text"
+                            value={phoneNumber}
+                            onChange={handlePhone}
+                          />
                         </div>
                       </div>
                     </div>
 
                     <div className="additional-info-wrap">
-                      <h4>Additional information</h4>
+                      <h4>Дэлгэрэнгүй мэдээлэл</h4>
                       <div className="additional-info">
-                        <label>Order notes</label>
                         <textarea
-                          placeholder="Notes about your order, e.g. special notes for delivery. "
+                          placeholder="Хаягийн дэлгэрэнгүй"
                           name="message"
                           defaultValue={""}
+                          value={locationDetail}
+                          onChange={handleLocation}
                         />
                       </div>
                     </div>
@@ -128,13 +166,13 @@ const Checkout = () => {
 
                 <div className="col-lg-5">
                   <div className="your-order-area">
-                    <h3>Your order</h3>
+                    <h3>Таны захиалга</h3>
                     <div className="your-order-wrap gray-bg-4">
                       <div className="your-order-product-info">
                         <div className="your-order-top">
                           <ul>
-                            <li>Product</li>
-                            <li>Total</li>
+                            <li>Бүтээгдэхүүн</li>
+                            <li>Нийт</li>
                           </ul>
                         </div>
                         <div className="your-order-middle">
@@ -163,41 +201,38 @@ const Checkout = () => {
                                   </span>{" "}
                                   <span className="order-price">
                                     {discountedPrice !== null
-                                      ? currency.currencySymbol +
-                                        (
+                                      ? (
                                           finalDiscountedPrice *
                                           cartItem.quantity
                                         ).toFixed(2)
-                                      : currency.currencySymbol +
-                                        (
+                                      : (
                                           finalProductPrice * cartItem.quantity
-                                        ).toFixed(2)}
+                                        ).toFixed(2)} ₮
                                   </span>
                                 </li>
                               );
                             })}
                           </ul>
                         </div>
-                        <div className="your-order-bottom">
+                        {/* <div className="your-order-bottom">
                           <ul>
                             <li className="your-order-shipping">Shipping</li>
                             <li>Free shipping</li>
                           </ul>
-                        </div>
+                        </div> */}
                         <div className="your-order-total">
                           <ul>
-                            <li className="order-total">Total</li>
-                            <li>
-                              {currency.currencySymbol +
-                                cartTotalPrice.toFixed(2)}
-                            </li>
+                            <li className="order-total">Нийт</li>
+                            <li>{cartTotalPrice.toFixed(2)} ₮</li>
                           </ul>
                         </div>
                       </div>
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover">Place Order</button>
+                      <button className="btn-hover" onClick={wallet}>
+                        Төлбөр төлөх
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -210,9 +245,9 @@ const Checkout = () => {
                       <i className="pe-7s-cash"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in cart to checkout <br />{" "}
+                      Таны сагсанд бүтээгдэхүүн байхгүй байна <br />{" "}
                       <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                        Shop Now
+                        Дэлгүүр хэсэх
                       </Link>
                     </div>
                   </div>
@@ -222,6 +257,13 @@ const Checkout = () => {
           </div>
         </div>
       </LayoutOne>
+      <QpayModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        base64Img={base64Img}
+        invoince={invoince}
+        id={id}
+      />
     </Fragment>
   );
 };

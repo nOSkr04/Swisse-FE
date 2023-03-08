@@ -39,7 +39,7 @@ const MenuCart = () => {
                     <Link to={process.env.PUBLIC_URL + "/product/" + item.id}>
                       <img
                         alt=""
-                        src={photo + item.images.image1}
+                        src={photo + item.thumbnail}
                         className="img-fluid"
                       />
                     </Link>
@@ -79,12 +79,12 @@ const MenuCart = () => {
             <Link className="default-btn" to={process.env.PUBLIC_URL + "/cart"}>
              Сагс үзэх
             </Link>
-            <Link
+            {/* <Link
               className="default-btn"
               to={process.env.PUBLIC_URL + "/checkout"}
             >
               Шалгах
-            </Link>
+            </Link> */}
           </div>
         </Fragment>
       ) : (

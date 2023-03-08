@@ -65,7 +65,7 @@ const App = () => {
               element={<Compare />}
             />
             <Route
-              path={process.env.PUBLIC_URL + "/checkout"}
+              path={process.env.PUBLIC_URL + "/checkout/:id/:price"}
               element={<Checkout />}
             />
              <Route
